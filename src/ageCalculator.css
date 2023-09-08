@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.input-container {
+    @apply flex flex-col gap-1
+}
+
+.input-field {
+    @apply w-20 h-14 rounded-md border-2 border-neutral-offwhite pl-3 outline-none focus:border-primary-purple text-inputs font-pop text-black
+}
