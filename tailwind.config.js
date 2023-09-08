@@ -15,6 +15,15 @@ module.exports = {
           "smokeygrey": "hsl(0, 1%, 44%)",
           "offblack": "hsl(0, 0%, 8%)"
         }
+      },
+      borderRadius: {
+        "custom": "100px"
+      },
+      fontSize: {
+        "inputs": "32px"
+      },
+      fontFamily: {
+        "pop" : " 'Poppins', sans-serif "
       }
     },
   },
