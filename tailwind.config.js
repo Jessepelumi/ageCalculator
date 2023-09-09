@@ -24,6 +24,9 @@ module.exports = {
       },
       fontFamily: {
         "pop" : " 'Poppins', sans-serif "
+      },
+      width: {
+        "custom": "450px"
       }
     },
   },
