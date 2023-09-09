@@ -20,7 +20,8 @@ module.exports = {
         "custom": "100px"
       },
       fontSize: {
-        "inputs": "32px"
+        "inputs": "32px",
+        "error": "10px"
       },
       fontFamily: {
         "pop" : " 'Poppins', sans-serif "

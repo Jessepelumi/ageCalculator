@@ -9,3 +9,11 @@
 .input-field {
     @apply w-24 h-14 rounded-md border-2 border-neutral-offwhite pl-3 outline-none focus:border-primary-purple text-inputs font-pop text-black md:w-28
 }
+
+.error-label {
+    @apply text-primary-lightred
+}
+
+.error-field {
+    @apply border-primary-lightred focus:border-primary-lightred 
+}

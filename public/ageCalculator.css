@@ -678,6 +678,10 @@ video {
   line-height: 1;
 }
 
+.text-error {
+  font-size: 10px;
+}
+
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -696,9 +700,19 @@ video {
   color: hsl(0 1% 44% / var(--tw-text-opacity));
 }
 
+.text-primary-lightred {
+  --tw-text-opacity: 1;
+  color: hsl(0 100% 67% / var(--tw-text-opacity));
+}
+
 .text-primary-purple {
   --tw-text-opacity: 1;
   color: hsl(259 100% 65% / var(--tw-text-opacity));
+}
+
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -740,6 +754,21 @@ video {
   .input-field {
     width: 7rem;
   }
+}
+
+.error-label {
+  --tw-text-opacity: 1;
+  color: hsl(0 100% 67% / var(--tw-text-opacity));
+}
+
+.error-field {
+  --tw-border-opacity: 1;
+  border-color: hsl(0 100% 67% / var(--tw-border-opacity));
+}
+
+.error-field:focus {
+  --tw-border-opacity: 1;
+  border-color: hsl(0 100% 67% / var(--tw-border-opacity));
 }
 
 .hover\:bg-neutral-offblack:hover {
