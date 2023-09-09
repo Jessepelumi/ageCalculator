@@ -10,30 +10,35 @@
     <link rel="stylesheet" href="ageCalculator.css">
     <title>Age Calculator</title>
 </head>
-<body class="h-screen bg-neutral-offwhite flex justify-center items-center sm:px-2">
+<body class="h-screen bg-neutral-offwhite flex justify-center items-center sm:mx-2">
     
     <div class="bg-neutral-white px-5 py-10 rounded-3xl rounded-br-custom">
         
-        <div class="flex gap-3 text-neutral-smokeygrey font-pop text-sm">
-            <div class="input-container">
-                <label for="day">DAY</label>
-                <input type="number" id="day" name="day" class="input-field">
+        <form class="flex flex-col gap-3 text-neutral-smokeygrey font-pop text-sm">
+            
+            <div class="flex gap-3">
+                <div class="input-container">
+                    <label for="day">DAY</label>
+                    <input type="number" id="day" name="day" placeholder="DD" class="input-field">
+                </div>
+                <div class="input-container">
+                    <label for="day">MONTH</label>
+                    <input type="number" id="month" name="month" placeholder="MM" class="input-field">
+                </div>
+                <div class="input-container">
+                    <label for="day">YEAR</label>
+                    <input type="number" id="year" name="year" placeholder="YYYY" class="input-field">
+                </div>
             </div>
-            <div class="input-container">
-                <label for="day">MONTH</label>
-                <input type="number" id="month" name="month" class="input-field">
-            </div>
-            <div class="input-container">
-                <label for="day">YEAR</label>
-                <input type="number" id="year" name="year" class="input-field">
-            </div>
-        </div>
 
-        <div class="flex justify-center items-center py-5 md:justify-end">
-            <hr class="text-neutral-smokeygrey w-32 md:w-96">
-            <img src="assets/images/icon-arrow.svg" alt="arrow icon" class="bg-primary-purple rounded-full p-4 h-14 hover:bg-neutral-offblack">
-            <hr class="text-neutral-smokeygrey w-32 md:hidden">
-        </div>
+            <div class="flex justify-center items-center py-5 md:justify-end">
+                <hr class="text-neutral-smokeygrey w-32 md:w-96">
+                <button type="submit">
+                    <img src="assets/images/icon-arrow.svg" alt="arrow icon" class="bg-primary-purple rounded-full p-4 h-14 hover:bg-neutral-offblack">
+                </button>
+                <hr class="text-neutral-smokeygrey w-32 md:hidden">
+            </div>
+        </form>
 
         <div class="text-5xl font-pop font-extrabold italic">
             <p>
