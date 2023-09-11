@@ -1,184 +1,153 @@
-const dayLabel = document.getElementById("dayLabel");
-const monthLabel = document.getElementById("monthLabel");
-const yearLabel = document.getElementById("yearLabel");
+document.addEventListener("DOMContentLoaded", () => {
+    
+    const dayInput = document.getElementById("day");
+    const monthInput = document.getElementById("month");
+    const yearInput = document.getElementById("year");
 
-const dayInput = document.getElementById("day");
-const monthInput = document.getElementById("month");
-const yearInput = document.getElementById("year");
-const form = document.getElementById("form");
+    const dayLabel = document.getElementById("dayLabel");
+    const monthLabel = document.getElementById("monthLabel");
+    const yearLabel = document.getElementById("yearLabel");
 
-const dayError = document.getElementById("dayError");
-const monthError = document.getElementById("monthError");
-const yearError = document.getElementById("yearError");
+    const dayError = document.getElementById("dayError");
+    const monthError = document.getElementById("monthError");
+    const yearError = document.getElementById("yearError");
 
-const yearContainer = document.getElementById("yearContainer");
-const monthContainer = document.getElementById("monthContainer");
-const dayContainer = document.getElementById("dayContainer");
+    const yearContainer = document.getElementById("yearContainer");
+    const monthContainer = document.getElementById("monthContainer");
+    const dayContainer = document.getElementById("dayContainer");
 
-const currentDate = new Date();
-const currentYear = currentDate.getFullYear();
+    const button = document.getElementById("calculateButton");
 
-form.addEventListener("submit", (e) => {
+    const currentDate = new Date();
 
-    if (dayInput.value === "" || dayInput.value === null) {
-        dayError.textContent = `This field is required`;
-        dayInput.classList.add("error-field");
-        dayLabel.classList.add("error-label");
-    }
-    if (monthInput.value === "" || monthInput.value === null) {
-        monthError.textContent = `This field is required`;
-        monthInput.classList.add("error-field");
-        monthLabel.classList.add("error-label");
-    }
-    if (yearInput.value === "" || yearInput.value === null) {
-        yearError.textContent = `This field is required`;
-        yearInput.classList.add("error-field");
-        yearLabel.classList.add("error-label");
-    }
+    dayInput.addEventListener("input", function() {
 
-    while (monthInput.value !== "") {
-        if (monthInput.value < 1 || monthInput.value > 12) {
-            monthError.textContent = `Must be a valid month`;
+        if (dayError.textContent === "Must be a valid date") {
+            dayInput.classList.remove("error-field");
+            dayLabel.classList.remove("error-label");
+            monthInput.classList.remove("error-field");
+            monthLabel.classList.remove("error-label");
+            yearInput.classList.remove("error-field");
+            yearLabel.classList.remove("error-label");
+        }
+
+        if (dayInput.value > 31) {
+
+            dayError.textContent = "Must be a valid day";
+            dayInput.classList.add("error-field");
+            dayLabel.classList.add("error-label");
+
+        } else {
+            dayInput.classList.remove("error-field");
+            dayLabel.classList.remove("error-label");
+        }
+
+    });
+
+    monthInput.addEventListener("input", function() {
+
+        if (dayError.textContent === "Must be a valid date") {
+            dayInput.classList.remove("error-field");
+            dayLabel.classList.remove("error-label");
+            monthInput.classList.remove("error-field");
+            monthLabel.classList.remove("error-label");
+            yearInput.classList.remove("error-field");
+            yearLabel.classList.remove("error-label");
+        }
+
+        if (monthInput.value > 12) {
+            monthError.textContent = "Must be a valid month";
             monthInput.classList.add("error-field");
             monthLabel.classList.add("error-label");
+        } else {
+            monthInput.classList.remove("error-field");
+            monthLabel.classList.remove("error-label");
         }
-        break;
-    }
 
-    while (dayInput.value !== "" && monthInput.value !== "") {
-        switch (monthInput.value) {
-            case "1":
-            case "3":
-            case "5":
-            case "7":
-            case "8":
-            case "10":
-            case "12":
-                if (dayInput.value < 1 || dayInput.value > 31) {
-                    dayError.textContent = `Must be a valid day`;
-                    dayInput.classList.add("error-field");
-                    dayLabel.classList.add("error-label");
-                }
-                break;
-            case "2":
-                if (dayInput.value < 1 || dayInput.value > 29) {
-                    dayError.textContent = `Must be a valid day`;
-                    dayInput.classList.add("error-field");
-                    dayLabel.classList.add("error-label");
-                }
-                break;
-            case "4":
-            case "6":
-            case "9":
-            case "11":
-                if (dayInput.value < 1 || dayInput.value > 30) {
-                    dayError.textContent = `Must be a valid day`;
-                    dayInput.classList.add("error-field");
-                    dayLabel.classList.add("error-label");
-                }
-                break;
-            default:
-                dayError.textContent = `Must be a valid date`;
-                dayInput.classList.add("error-field");
-                dayLabel.classList.add("error-label");
+    });
+
+    yearInput.addEventListener("input", function() {
+
+        if (dayError.textContent === "Must be a valid date") {
+            dayInput.classList.remove("error-field");
+            dayLabel.classList.remove("error-label");
+            monthInput.classList.remove("error-field");
+            monthLabel.classList.remove("error-label");
+            yearInput.classList.remove("error-field");
+            yearLabel.classList.remove("error-label");
         }
-        break;
-    }
 
-    while (yearInput.value !== "") {
-        if (yearInput.value > currentYear) {
-            yearError.textContent = `Must be in the past`;
+        if (yearInput.value > currentDate.getFullYear()) {
+            yearError.textContent = "Must be in the past";
             yearInput.classList.add("error-field");
             yearLabel.classList.add("error-label");
+        } else {
+            yearInput.classList.remove("error-field");
+            yearLabel.classList.remove("error-label");
         }
-        if (yearInput.value < 1) {
-            yearError.textContent = `Must be a valid year`;
+
+    });
+
+    button.addEventListener("click", function() {
+
+        day = dayInput.value;
+        month = monthInput.value;
+        year = yearInput.value;
+
+        if (!day) {
+            dayInput.classList.add("error-field");
+            dayLabel.classList.add("error-label");
+            dayError.textContent = "This field is required";
+        }
+
+        if (!month) {
+            monthInput.classList.add("error-field");
+            monthLabel.classList.add("error-label");
+            monthError.textContent = "This field is required";
+        }
+
+        if (!year) {
             yearInput.classList.add("error-field");
             yearLabel.classList.add("error-label");
+            yearError.textContent = "This field is required";
         }
-        break;
-    }
 
-    while (dayInput.value !== "" && monthInput.value !== "" && yearInput.value !== "") {
-        switch (monthInput.value) {
-            case "1":
-            case "3":
-            case "5":
-            case "7":
-            case "8":
-            case "10":
-            case "12":
-                if (dayInput.value < 1 || dayInput.value > 31) {
-                    dayError.textContent = `Must be a valid date`;
-                    dayInput.classList.add("error-field");
-                    dayLabel.classList.add("error-label");
-                    monthInput.classList.add("error-field");
-                    monthLabel.classList.add("error-label");
-                    yearInput.classList.add("error-field");
-                    yearLabel.classList.add("error-label");
-                }
-                break;
-            case "2":
-                if (dayInput.value < 1 || dayInput.value > 29) {
-                    dayError.textContent = `Must be a valid date`;
-                    dayInput.classList.add("error-field");
-                    dayLabel.classList.add("error-label");
-                    monthInput.classList.add("error-field");
-                    monthLabel.classList.add("error-label");
-                    yearInput.classList.add("error-field");
-                    yearLabel.classList.add("error-label");
-                }
-                break;
-            case "4":
-            case "6":
-            case "9":
-            case "11":
-                if (dayInput.value < 1 || dayInput.value > 30) {
-                    dayError.textContent = `Must be a valid date`;
-                    dayInput.classList.add("error-field");
-                    dayLabel.classList.add("error-label");
-                    monthInput.classList.add("error-field");
-                    monthLabel.classList.add("error-label");
-                    yearInput.classList.add("error-field");
-                    yearLabel.classList.add("error-label");
-                }
-                break;
-            default:
-                dayError.textContent = `Must be a valid date`;
-                dayInput.classList.add("error-field");
-                dayLabel.classList.add("error-label");
-                monthInput.classList.add("error-field");
-                monthLabel.classList.add("error-label");
-                yearInput.classList.add("error-field");
-                yearLabel.classList.add("error-label");
+        if (!day || !month || !year) {
+            return;
         }
-        break;
-    }
 
-    const birthDay = parseInt(dayInput.value, 10);
-    const birthMonth = parseInt(monthInput.value, 10);
-    const birthYear = parseInt(yearInput.value, 10);
+        const date = new Date(year, month - 1, day);
 
-    function calculateAge () {
-        const ageInYears = currentYear - birthYear;
-        const ageInMonths = currentDate.getMonth() + 1 - birthMonth;
-        const ageInDays = currentDate.getDate() - birthDay;
 
-        if (ageInMonths < 0 || (ageInMonths === 0 && ageInDays < 0)) {
-            ageInYears--;
-            ageInMonths += 12;
-            if (ageInDays < 0) {
-                ageInMonths--;
-                ageInDays += 30;
+        let ageYear = currentDate.getFullYear() - date.getFullYear();
+        let ageMonth = 0;
+        let ageDay = 0;
+
+        if (currentDate < new Date(currentDate.getFullYear(), month - 1, day)) {
+            ageYear = ageYear - 1;
+            ageMonth = currentDate.getMonth() + 1;
+            ageDay = currentDate.getDate();
+        } else {
+            if (currentDate.getMonth() + 1 === month) {
+              ageMonth = 0;
+              ageDay = currentData.getDate() - day;
+              console.log(ageDay);
+            } else {
+              ageMonth = currentDate.getMonth() + 1 - month;
+              if (currentDate.getDate() < day) {
+                ageMonth = ageMonth - 1;
+                ageDay = currentDate.getDate() + new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate() - day;
+              } else {
+                ageDay = currentDate.getDate() - day;
+              }
             }
+      
         }
 
-        yearContainer.textContent = ageInYears;
-        monthContainer.textContent = ageInMonths;
-        dayContainer.textContent = ageInDays;
-    }
+        yearContainer.textContent = ageYear;
+        monthContainer.textContent = ageMonth;
+        dayContainer.textContent = ageDay;
 
-    calculateAge();
+    });
 
-    e.preventDefault();
-})
+});
