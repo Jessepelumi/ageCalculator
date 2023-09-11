@@ -41,41 +41,44 @@ form.addEventListener("submit", (e) => {
         break;
     }
 
-    switch (monthInput.value) {
-        case "1":
-        case "3":
-        case "5":
-        case "7":
-        case "8":
-        case "10":
-        case "12":
-            if (dayInput.value < 1 || dayInput.value > 31) {
-                dayError.textContent = `Must be a valid day`;
+    while (dayInput.value !== "" && monthInput.value !== "") {
+        switch (monthInput.value) {
+            case "1":
+            case "3":
+            case "5":
+            case "7":
+            case "8":
+            case "10":
+            case "12":
+                if (dayInput.value < 1 || dayInput.value > 31) {
+                    dayError.textContent = `Must be a valid day`;
+                    dayInput.classList.add("error-field");
+                    dayLabel.classList.add("error-label");
+                }
+                break;
+            case "2":
+                if (dayInput.value < 1 || dayInput.value > 29) {
+                    dayError.textContent = `Must be a valid day`;
+                    dayInput.classList.add("error-field");
+                    dayLabel.classList.add("error-label");
+                }
+                break;
+            case "4":
+            case "6":
+            case "9":
+            case "11":
+                if (dayInput.value < 1 || dayInput.value > 30) {
+                    dayError.textContent = `Must be a valid day`;
+                    dayInput.classList.add("error-field");
+                    dayLabel.classList.add("error-label");
+                }
+                break;
+            default:
+                dayError.textContent = `Must be a valid date`;
                 dayInput.classList.add("error-field");
                 dayLabel.classList.add("error-label");
-            }
-            break;
-        case "2":
-            if (dayInput.value < 1 || dayInput.value > 29) {
-                dayError.textContent = `Must be a valid day`;
-                dayInput.classList.add("error-field");
-                dayLabel.classList.add("error-label");
-            }
-            break;
-        case "4":
-        case "6":
-        case "9":
-        case "11":
-            if (dayInput.value < 1 || dayInput.value > 30) {
-                dayError.textContent = `Must be a valid day`;
-                dayInput.classList.add("error-field");
-                dayLabel.classList.add("error-label");
-            }
-            break;
-        default:
-            dayError.textContent = `Must be a valid date`;
-            dayInput.classList.add("error-field");
-            dayLabel.classList.add("error-label");
+        }
+        break;
     }
 
     while (yearInput.value !== "") {
