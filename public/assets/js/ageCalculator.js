@@ -22,13 +22,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     dayInput.addEventListener("input", function() {
 
-        if (dayError.textContent === "Must be a valid date") {
+        if (dayError.textContent !== "Must be a valid date") {
             dayInput.classList.remove("error-field");
             dayLabel.classList.remove("error-label");
             monthInput.classList.remove("error-field");
             monthLabel.classList.remove("error-label");
             yearInput.classList.remove("error-field");
             yearLabel.classList.remove("error-label");
+
+            dayError.textContent = "";
+            monthError.textContent = "";
+            yearError.textContent = "";
         }
 
         if (dayInput.value > 31) {
@@ -53,6 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
             monthLabel.classList.remove("error-label");
             yearInput.classList.remove("error-field");
             yearLabel.classList.remove("error-label");
+
+            dayError.textContent = "";
+            monthError.textContent = "";
+            yearError.textContent = "";
         }
 
         if (monthInput.value > 12) {
@@ -75,6 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
             monthLabel.classList.remove("error-label");
             yearInput.classList.remove("error-field");
             yearLabel.classList.remove("error-label");
+
+            dayError.textContent = "";
+            monthError.textContent = "";
+            yearError.textContent = "";
         }
 
         if (yearInput.value > currentDate.getFullYear()) {
