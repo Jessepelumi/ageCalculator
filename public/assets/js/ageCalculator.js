@@ -96,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             yearInput.classList.remove("error-field");
             yearLabel.classList.remove("error-label");
+            yearError.textContent = "";
         }
 
     });
